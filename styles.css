@@ -51,6 +51,40 @@
   /* Transitions */
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --dur: 0.3s;
+
+  /* Theme specific defaults (Light Mode) */
+  --clr-navbar-bg: rgba(255, 255, 255, 0.95);
+  --clr-hero-bg: linear-gradient(135deg, #FFFFFF 0%, #F0F4FF 50%, #E8F0FE 100%);
+  --clr-nav-mobile-bg: rgba(255, 255, 255, 0.98);
+  --clr-border-form: #E8ECF4;
+}
+
+/* --- Dark Mode CSS Variables --- */
+body.dark-mode {
+  --clr-bg: #0F0F1B;
+  --clr-bg-soft: #1A1A2E;
+  --clr-bg-card: #1E1E38;
+
+  --clr-dark: #F5F6FA;
+  --clr-dark-soft: #E1E2E6;
+  --clr-text: #E1E2E6;
+  --clr-text-muted: #A3A7C2;
+
+  --clr-accent-light: rgba(245, 166, 35, 0.15);
+  --clr-blue-light: rgba(74, 144, 217, 0.15);
+
+  --clr-blob-amber: rgba(255, 209, 102, 0.15);
+  --clr-blob-teal: rgba(168, 218, 220, 0.15);
+  --clr-blob-blue: rgba(69, 123, 157, 0.15);
+
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.25);
+  --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.4);
+  --shadow-nav: 0 2px 20px rgba(0, 0, 0, 0.25);
+
+  --clr-navbar-bg: rgba(15, 15, 27, 0.95);
+  --clr-hero-bg: linear-gradient(135deg, #0F0F1B 0%, #1A1A2E 50%, #171E30 100%);
+  --clr-nav-mobile-bg: rgba(26, 26, 46, 0.98);
+  --clr-border-form: #2D2D44;
 }
 
 /* --- Reset & Base --- */
@@ -233,7 +267,7 @@ ol {
 }
 
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--clr-navbar-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 12px 0;
@@ -261,6 +295,8 @@ ol {
   display: flex;
   align-items: center;
   gap: 32px;
+  margin-left: auto;
+  margin-right: 32px;
 }
 
 .nav-links a {
@@ -312,6 +348,59 @@ ol {
   box-shadow: 0 4px 16px rgba(245, 166, 35, 0.35);
 }
 
+/* Nav Actions Wrapper */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: var(--clr-bg-soft);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--clr-text);
+  transition: all var(--dur) var(--ease);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  z-index: 1001;
+}
+
+.theme-toggle:hover {
+  background: var(--clr-accent-light);
+  color: var(--clr-accent);
+  transform: scale(1.1);
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.5s var(--ease);
+}
+
+/* Hide sun/moon based on theme */
+body:not(.dark-mode) .theme-toggle .sun-icon {
+  display: none;
+}
+body.dark-mode .theme-toggle .moon-icon {
+  display: none;
+}
+
+.theme-toggle:active svg {
+  transform: scale(0.9) rotate(45deg);
+}
+
 /* Hamburger Menu */
 .hamburger {
   display: none;
@@ -350,7 +439,7 @@ ol {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, #FFFFFF 0%, #F0F4FF 50%, #E8F0FE 100%);
+  background: var(--clr-hero-bg);
   position: relative;
   overflow: hidden;
   padding-top: 80px;
@@ -510,7 +599,7 @@ ol {
   position: absolute;
   bottom: 30px;
   left: -20px;
-  background: #fff;
+  background: var(--clr-bg-card);
   padding: 12px 20px;
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
@@ -963,7 +1052,7 @@ ol {
   width: 14px;
   height: 14px;
   background: var(--clr-accent);
-  border: 3px solid #fff;
+  border: 3px solid var(--clr-bg);
   border-radius: 50%;
   box-shadow: 0 0 0 4px rgba(245, 166, 35, 0.2);
 }
@@ -1279,7 +1368,7 @@ ol {
 .form-textarea {
   width: 100%;
   padding: 13px 18px;
-  border: 2px solid #E8ECF4;
+  border: 2px solid var(--clr-border-form);
   border-radius: var(--radius-sm);
   font-family: var(--ff-body);
   font-size: 0.92rem;
@@ -1345,10 +1434,11 @@ ol {
 
 .footer .container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
+  justify-content: center;
+  text-align: center;
+  gap: 11px;
 }
 
 .footer-text {
@@ -1462,13 +1552,14 @@ ol {
     right: -100%;
     width: 280px;
     height: 100vh;
-    background: rgba(255, 255, 255, 0.98);
+    background: var(--clr-nav-mobile-bg);
     backdrop-filter: blur(16px);
     flex-direction: column;
     padding: 100px 40px 40px;
     gap: 28px;
     transition: right 0.4s var(--ease);
     box-shadow: -4px 0 30px rgba(0, 0, 0, 0.1);
+    margin: 0;
   }
 
   .nav-links.open {

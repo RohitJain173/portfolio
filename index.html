@@ -27,6 +27,14 @@
 </head>
 
 <body>
+  <script>
+    (function() {
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.body.classList.add('dark-mode');
+      }
+    })();
+  </script>
 
   <!-- ===== NAVBAR ===== -->
   <nav class="navbar" id="navbar">
@@ -41,11 +49,31 @@
         <a href="#certifications">Certificates</a>
         <a href="#contact" class="nav-cta">Contact</a>
       </div>
-      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+          <!-- Sun Icon (visible in dark mode) -->
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <!-- Moon Icon (visible in light mode) -->
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
     <div class="nav-overlay" id="navOverlay"></div>
   </nav>
@@ -118,10 +146,10 @@
         <span class="section-label reveal">About Me</span>
         <h2 class="section-title reveal reveal-delay-1">A Data-Driven Storyteller</h2>
         <p class="about-bio reveal reveal-delay-2">
-          Results-driven Data Analyst with expertise in SQL, Power BI, Python, and Excel.
+          Results-driven Data Analyst with expertise in SQL, Power BI, Python and Excel.
           Passionate about transforming complex datasets into intuitive dashboards and actionable
           business insights. Microsoft Power BI (PL-300) certified with hands-on experience in
-          ETL, KPI reporting, and BI dashboard automation from internship at AI-DROM Global Pvt. Ltd.
+          ETL, KPI reporting and BI dashboard automation from internship at AI-DROM Global Private Limited.
           Seeking Data / BI / MIS Analyst roles where I can leverage analytical and visualisation
           skills to drive data-informed decisions.
         </p>
@@ -164,7 +192,7 @@
         <h2 class="section-title reveal reveal-delay-1" style="margin-left:auto;margin-right:auto;">Technical Skills
         </h2>
         <p class="section-subtitle reveal reveal-delay-2" style="margin-left:auto;margin-right:auto;">
-          A comprehensive toolkit for turning data into insights, dashboards, and business value.
+          A comprehensive toolkit for turning data into insights, dashboards and business value.
         </p>
       </div>
 
@@ -254,7 +282,7 @@
         <h2 class="section-title reveal reveal-delay-1" style="margin-left:auto;margin-right:auto;">Featured Projects
         </h2>
         <p class="section-subtitle reveal reveal-delay-2" style="margin-left:auto;margin-right:auto;">
-          Real-world data analytics projects showcasing Power BI dashboards, SQL analysis, and actionable insights.
+          Real-world data analytics projects showcasing Power BI dashboards, SQL analysis and actionable insights.
         </p>
       </div>
 
@@ -274,7 +302,7 @@
             </div>
             <p class="project-desc">
               Engineered an interactive Power BI dashboard analysing 120+ years of Olympic medal data
-              by year, country, sport, and medal type. Advanced DAX measures track gold-medal ratios
+              by year, country, sport and medal type. Advanced DAX measures track gold-medal ratios
               and country dominance trends.
             </p>
             <div class="project-outcomes">
@@ -310,12 +338,12 @@
             </div>
             <p class="project-desc">
               Analysed large-scale customer transaction data using SQL to uncover patterns in
-              purchase frequency, basket size, and spending behaviour. Segmented customers by
+              purchase frequency, basket size and spending behaviour. Segmented customers by
               buying habits to identify high-value groups.
             </p>
             <div class="project-outcomes">
               <strong>Key Outcomes:</strong> Identified key drivers of sales variation including
-              seasonality, product preferences, and payment methods — enabling targeted marketing strategies.
+              seasonality, product preferences and payment methods — enabling targeted marketing strategies.
             </div>
             <a href="https://github.com/RohitJain173" target="_blank" rel="noopener"
               class="btn btn-primary btn-sm project-link">
@@ -343,9 +371,9 @@
               <span class="project-tool">Excel</span>
             </div>
             <p class="project-desc">
-              Decomposed end-to-end delivery delays into preparation, dispatch, and transit stages
+              Decomposed end-to-end delivery delays into preparation, dispatch and transit stages
               to pinpoint primary drivers of order cancellations. Multi-dimensional analysis across
-              time slots, locations, and delivery partner ratings.
+              time slots, locations and delivery partner ratings.
             </p>
             <div class="project-outcomes">
               <strong>Key Outcomes:</strong> Formulated targeted operational strategies including
@@ -380,8 +408,8 @@
             </div>
             <p class="project-desc">
               Built a comprehensive HR Analytics dashboard to track employee attrition, demographics,
-              job satisfaction, and workforce performance metrics. Analysed key HR KPIs across
-              departments, education fields, and age groups.
+              job satisfaction and workforce performance metrics. Analysed key HR KPIs across
+              departments, education fields and age groups.
             </p>
             <div class="project-outcomes">
               <strong>Key Outcomes:</strong> Identified attrition patterns by department and role;
@@ -414,8 +442,8 @@
               <span class="project-tool">DAX</span>
             </div>
             <p class="project-desc">
-              Analysed Superstore sales data across categories, regions, and customer segments to uncover
-              revenue trends, profit margins, and shipping performance. Built interactive dashboards with
+              Analysed Superstore sales data across categories, regions and customer segments to uncover
+              revenue trends, profit margins and shipping performance. Built interactive dashboards with
               drill-down capabilities for granular business insights.
             </p>
             <div class="project-outcomes">
@@ -486,7 +514,7 @@
               <span class="project-tool">SQL</span>
             </div>
             <p class="project-desc">
-              Analysed Electric Vehicle (EV) market data to understand growth trends, geographical adoption, and battery
+              Analysed Electric Vehicle (EV) market data to understand growth trends, geographical adoption and battery
               technology advancements. Developed interactive Power BI dashboards to track market share and adoption
               forecasts.
             </p>
@@ -542,7 +570,7 @@
               <div class="timeline-impacts">
                 <div class="timeline-impact">
                   <span class="timeline-impact-icon">▹</span>
-                  <p>Designed & deployed Power BI dashboards for sales, operations, and performance tracking — boosted
+                  <p>Designed & deployed Power BI dashboards for sales, operations and performance tracking — boosted
                     reporting efficiency by <span class="impact-highlight">40%</span></p>
                 </div>
                 <div class="timeline-impact">
@@ -586,7 +614,7 @@
         <span class="section-label reveal">Credentials</span>
         <h2 class="section-title reveal reveal-delay-1" style="margin-left:auto;margin-right:auto;">Certifications</h2>
         <p class="section-subtitle reveal reveal-delay-2" style="margin-left:auto;margin-right:auto;">
-          Industry-recognised certifications validating expertise in data analysis, BI, and programming.
+          Industry-recognised certifications validating expertise in data analysis, BI and programming.
         </p>
       </div>
 
@@ -599,7 +627,6 @@
               <p class="cert-name">Microsoft Power BI Data Analyst Associate (PL-300)</p>
               <p class="cert-issuer">Microsoft</p>
             </div>
-            <span class="cert-date">Certificate</span>
           </div>
         </a>
         </a>
@@ -611,7 +638,7 @@
               <p class="cert-name">Data Visualisation — Effective Business Insights</p>
               <p class="cert-issuer">Tata Group</p>
             </div>
-            <span class="cert-date">Certificate</span>
+
           </div>
         </a>
         <a href="https://github.com/RohitJain173/Certificates/blob/main/Data%20Analyst%20-%20Big%204%20Ready-Certificate.pdf"
@@ -622,7 +649,7 @@
               <p class="cert-name">Data Analyst — Big 4 Ready</p>
               <p class="cert-issuer">Certificate</p>
             </div>
-            <span class="cert-date">Certificate</span>
+
           </div>
         </a>
         <a href="https://github.com/RohitJain173/Certificates/blob/main/CertificateOfCompletion_Career%20Essentials%20in%20Data%20Analysis%20by%20Microsoft%20and%20LinkedIn.pdf"
@@ -633,7 +660,7 @@
               <p class="cert-name">Career Essentials in Data Analysis</p>
               <p class="cert-issuer">Microsoft & LinkedIn</p>
             </div>
-            <span class="cert-date">Certificate</span>
+
           </div>
         </a>
         <a href="https://github.com/RohitJain173/Certificates/blob/main/Deloitee%20Certifictae.pdf" target="_blank"
@@ -644,7 +671,7 @@
               <p class="cert-name">Data Analytics Job Simulation</p>
               <p class="cert-issuer">Deloitte Australia</p>
             </div>
-            <span class="cert-date">Certificate</span>
+
           </div>
 
           <a href="https://github.com/RohitJain173/Certificates/blob/main/Python%20Cetificate.pdf" target="_blank"
@@ -655,7 +682,7 @@
                 <p class="cert-name">Python</p>
                 <p class="cert-issuer">Spoken Tutorial, IIT Bombay</p>
               </div>
-              <span class="cert-date">Certificate</span>
+
             </div>
           </a>
           <a href="https://github.com/RohitJain173/Certificates/blob/main/SQL%20CERTIFICATION.pdf" target="_blank"
@@ -666,7 +693,6 @@
                 <p class="cert-name">SQL</p>
                 <p class="cert-issuer">Spoken Tutorial, IIT Bombay</p>
               </div>
-              <span class="cert-date">Certificate</span>
             </div>
           </a>
       </div>
@@ -685,7 +711,7 @@
         <h2 class="section-title reveal reveal-delay-1" style="margin-left:auto;margin-right:auto;">Let's Work Together
         </h2>
         <p class="section-subtitle reveal reveal-delay-2" style="margin-left:auto;margin-right:auto;">
-          Open to Data Analyst, BI Analyst, and MIS Analyst roles. Feel free to reach out!
+          Open to Data Analyst, BI Analyst and MIS Analyst roles. Feel free to reach out!
         </p>
       </div>
 
@@ -741,7 +767,8 @@
 
         <!-- Contact Form -->
         <div class="contact-form-wrapper reveal reveal-delay-1">
-          <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="44b848e0-5909-46ec-956d-ccf32d0b6672">
             <div class="form-group">
               <label for="name" class="form-label">Full Name</label>
               <input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required>
@@ -752,12 +779,8 @@
             </div>
             <div class="form-group">
               <label for="subject" class="form-label">Subject</label>
-              <select id="subject" name="subject" class="form-select" required>
-                <option value="" disabled selected>Select a subject</option>
-                <option value="Job Opportunity">Job Opportunity</option>
-                <option value="Freelance Project">Freelance Project</option>
-                <option value="General Enquiry">General Enquiry</option>
-              </select>
+              <input type="text" id="subject" name="subject" class="form-input" placeholder="Job opportunity" required>
+
             </div>
             <div class="form-group">
               <label for="message" class="form-label">Message</label>

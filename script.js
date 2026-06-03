@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.getElementById('contactForm');
   const formStatus = document.getElementById('formStatus');
   const submitBtn = document.getElementById('submitBtn');
+  const themeToggle = document.getElementById('themeToggle');
 
   // ===== Navbar Scroll Effect =====
   let lastScrollY = 0;
@@ -241,6 +242,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       typeChar();
     }, 800);
+  }
+
+  // ===== Dark Mode Toggle =====
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDarkMode = document.body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    });
   }
 
   // Run initial checks
